@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Custom styles
+   (Everything else is styled with the Tailwind utility classes in index.html.
+   The rules below are the parts the original React file set via inline
+   `style={...}` props, plus the [hidden] helper used to switch pages.)
+   ========================================================================== */
+
+/* Used by script.js to show / hide pages and states */
+[hidden] {
+  display: none !important;
+}
+
+/* Envelope flap shape (was an inline clipPath style) */
+.envelope-flap {
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Background floating hearts (were inline top / left / fontSize / animation styles) */
+.floating-heart:nth-child(1) {
+  top: 0%;
+  left: 0%;
+  font-size: 1.2rem;
+  animation-duration: 3s;
+  animation-delay: 0s;
+}
+.floating-heart:nth-child(2) {
+  top: 13%;
+  left: 19%;
+  font-size: 2.2rem;
+  animation-duration: 4s;
+  animation-delay: 0.4s;
+}
+.floating-heart:nth-child(3) {
+  top: 26%;
+  left: 38%;
+  font-size: 3.2rem;
+  animation-duration: 5s;
+  animation-delay: 0.8s;
+}
+.floating-heart:nth-child(4) {
+  top: 39%;
+  left: 57%;
+  font-size: 1.2rem;
+  animation-duration: 6s;
+  animation-delay: 1.2s;
+}
+.floating-heart:nth-child(5) {
+  top: 52%;
+  left: 76%;
+  font-size: 2.2rem;
+  animation-duration: 3s;
+  animation-delay: 1.6s;
+}
+.floating-heart:nth-child(6) {
+  top: 65%;
+  left: 95%;
+  font-size: 3.2rem;
+  animation-duration: 4s;
+  animation-delay: 2s;
+}
+.floating-heart:nth-child(7) {
+  top: 78%;
+  left: 18%;
+  font-size: 1.2rem;
+  animation-duration: 5s;
+  animation-delay: 2.4s;
+}
+.floating-heart:nth-child(8) {
+  top: 91%;
+  left: 37%;
+  font-size: 2.2rem;
+  animation-duration: 6s;
+  animation-delay: 2.8s;
+}
+.floating-heart:nth-child(9) {
+  top: 12%;
+  left: 56%;
+  font-size: 3.2rem;
+  animation-duration: 3s;
+  animation-delay: 3.2s;
+}
+.floating-heart:nth-child(10) {
+  top: 25%;
+  left: 75%;
+  font-size: 1.2rem;
+  animation-duration: 4s;
+  animation-delay: 3.6s;
+}
+.floating-heart:nth-child(11) {
+  top: 38%;
+  left: 94%;
+  font-size: 2.2rem;
+  animation-duration: 5s;
+  animation-delay: 4s;
+}
+.floating-heart:nth-child(12) {
+  top: 51%;
+  left: 17%;
+  font-size: 3.2rem;
+  animation-duration: 6s;
+  animation-delay: 4.4s;
+}
+.floating-heart:nth-child(13) {
+  top: 64%;
+  left: 36%;
+  font-size: 1.2rem;
+  animation-duration: 3s;
+  animation-delay: 4.8s;
+}
+.floating-heart:nth-child(14) {
+  top: 77%;
+  left: 55%;
+  font-size: 2.2rem;
+  animation-duration: 4s;
+  animation-delay: 5.2s;
+}
+
+/* Initial position of the runaway "No" button (script.js moves it on click) */
+#no-btn {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+/* ==========================================================================
+   Tulips
+   ========================================================================== */
+.tulip {
+  display: block;
+  overflow: visible;
+}
+
+/* Gentle sway, rooted at the bottom of the stem */
+.tulip-sway {
+  transform-origin: 50% 100%;
+  animation: tulip-sway 5s ease-in-out infinite;
+}
+.tulip-sway:nth-child(2n) {
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+.tulip-sway:nth-child(3n) {
+  animation-duration: 4.5s;
+  animation-delay: -2s;
+}
+.tulip-sway:nth-child(5n) {
+  animation-duration: 7s;
+  animation-delay: -3s;
+}
+
+@keyframes tulip-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tulip-sway {
+    animation: none;
+  }
+}

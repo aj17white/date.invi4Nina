@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Date Invitation for Nina</title>
+
+    <!-- Tailwind CSS (same utility classes as the original design) -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Tulip graphic (reused everywhere with <use href="#tulip">). Colours come from --tulip / --tulip-dark -->
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <symbol id="tulip" viewBox="0 0 64 120">
+          <!-- stem -->
+          <path
+            d="M32 54 C33 78 30 98 32 118"
+            fill="none"
+            stroke="#4CAF6A"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <!-- leaves -->
+          <path
+            d="M32 112 C13 104 8 82 13 64 C26 74 33 92 32 112Z"
+            fill="#5CC27A"
+          />
+          <path
+            d="M32 106 C50 100 57 84 53 70 C42 78 33 90 32 106Z"
+            fill="#3FA25E"
+          />
+          <!-- petals -->
+          <path
+            d="M32 54 C15 52 9 33 12 14 C22 20 30 33 32 54Z"
+            fill="var(--tulip-dark)"
+          />
+          <path
+            d="M32 54 C49 52 55 33 52 14 C42 20 34 33 32 54Z"
+            fill="var(--tulip-dark)"
+          />
+          <path
+            d="M32 5 C21 18 20 40 32 56 C44 40 43 18 32 5Z"
+            fill="var(--tulip)"
+          />
+          <path
+            d="M32 12 C28 24 28 38 32 48"
+            fill="none"
+            stroke="#fff"
+            stroke-opacity=".35"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div
+      id="app"
+      class="min-h-screen bg-gradient-to-br from-[#FFF0F5] via-[#FFE4E1] to-[#FAF0E6] text-gray-800 font-sans flex flex-col justify-between p-4 sm:p-6 overflow-x-hidden relative selection:bg-pink-200"
+    >
+      <!-- Background Floating Hearts -->
+      <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+        <div
+          class="floating-heart absolute text-pink-300 opacity-40 animate-pulse"
+        >
+          💗
+        </div>
+      </div>
+
+      <!-- Background Tulips -->
+      <div
+        class="fixed bottom-0 inset-x-0 h-40 pointer-events-none overflow-hidden z-0 flex items-end justify-around px-2"
+      >
+        <svg
+          class="tulip tulip-sway shrink-0 h-24 w-12"
+          style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-32 w-16"
+          style="--tulip: #fb7185; --tulip-dark: #e11d48"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-20 w-10"
+          style="--tulip: #ffd966; --tulip-dark: #f5b83d"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-28 w-14"
+          style="--tulip: #ffb6c1; --tulip-dark: #f472b6"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-24 w-12"
+          style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-36 w-[4.5rem]"
+          style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-20 w-10"
+          style="--tulip: #ffb38a; --tulip-dark: #f97362"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-28 w-14"
+          style="--tulip: #fb7185; --tulip-dark: #e11d48"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-24 w-12"
+          style="--tulip: #ffb6c1; --tulip-dark: #f472b6"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-32 w-16"
+          style="--tulip: #ffd966; --tulip-dark: #f5b83d"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-20 w-10"
+          style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-28 w-14"
+          style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <svg
+          class="tulip tulip-sway shrink-0 h-24 w-12"
+          style="--tulip: #fb7185; --tulip-dark: #e11d48"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+      </div>
+      <div
+        class="fixed left-1 top-1/3 pointer-events-none z-0 opacity-60 -rotate-12"
+      >
+        <svg
+          class="tulip tulip-sway h-24 w-12"
+          style="--tulip: #ffb6c1; --tulip-dark: #f472b6"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+      </div>
+      <div
+        class="fixed right-1 top-1/4 pointer-events-none z-0 opacity-60 rotate-12"
+      >
+        <svg
+          class="tulip tulip-sway h-28 w-14"
+          style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+      </div>
+
+      <!-- Canvas Overlay for Confetti -->
+      <canvas
+        id="confetti-canvas"
+        class="fixed inset-0 pointer-events-none z-50"
+      ></canvas>
+
+      <!-- Floating Music Control Button (Top-Right) -->
+      <div class="fixed top-4 right-4 z-40">
+        <button
+          id="music-btn"
+          class="flex items-center gap-2 bg-white/80 backdrop-blur-md border border-pink-200 text-rose-600 px-3.5 py-2 rounded-full shadow-md hover:bg-pink-50 transition-all duration-300 text-xs sm:text-sm font-semibold active:scale-95"
+          title="Play music"
+        >
+          <span id="music-on" class="contents" hidden>
+            <i
+              data-lucide="volume-2"
+              class="w-4 h-4 text-rose-500 animate-bounce"
+            ></i>
+            <span>Music On 🎵</span>
+          </span>
+          <span id="music-off" class="contents">
+            <i data-lucide="volume-x" class="w-4 h-4 text-gray-400"></i>
+            <span>Music Off 🔇</span>
+          </span>
+        </button>
+      </div>
+
+      <!-- MAIN CONTENT WRAPPER -->
+      <main
+        class="w-full max-w-xl mx-auto my-auto z-10 py-6 flex flex-col items-center"
+      >
+        <!-- PAGE 1: WELCOME SCREEN (THE ENVELOPE) -->
+        <section
+          id="stage-1"
+          class="w-full flex flex-col items-center text-center animate-fade-in space-y-6"
+        >
+          <div
+            class="bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-pink-200 shadow-xl w-full flex flex-col items-center relative overflow-hidden"
+          >
+            <div
+              class="inline-flex items-center gap-2 bg-pink-100 border border-pink-200 text-rose-600 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2"
+            >
+              Special Delivery From Aaron 💌
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-rose-600 mb-1">
+              Hey <span data-config="recipientName"></span>! 👋
+            </h1>
+            <p class="text-gray-600 text-sm sm:text-base mb-6">
+              I have something special to ask you...
+            </p>
+            <div
+              class="flex items-end justify-center gap-1 mb-4 pointer-events-none"
+            >
+              <svg
+                class="tulip h-14 w-7 -rotate-6"
+                style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                aria-hidden="true"
+              >
+                <use href="#tulip" /></svg
+              ><svg
+                class="tulip h-16 w-8"
+                style="--tulip: #ffd966; --tulip-dark: #f5b83d"
+                aria-hidden="true"
+              >
+                <use href="#tulip" /></svg
+              ><svg
+                class="tulip h-14 w-7 rotate-6"
+                style="--tulip: #fb7185; --tulip-dark: #e11d48"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <!-- Envelope Graphic -->
+            <div
+              id="envelope"
+              class="w-64 h-44 sm:w-72 sm:h-48 bg-rose-300 rounded-2xl relative shadow-md cursor-pointer group transition-transform duration-500 flex items-center justify-center border-4 border-rose-200 hover:scale-105"
+            >
+              <!-- Envelope Flap with Wax Seal -->
+              <div
+                id="envelope-flap"
+                class="envelope-flap absolute top-0 inset-x-0 h-24 bg-rose-400 origin-top transition-all duration-700 rounded-t-2xl z-20 flex items-center justify-center shadow-md"
+              >
+                <i
+                  data-lucide="heart"
+                  class="w-8 h-8 text-white fill-rose-500 mb-8 transition-transform group-hover:scale-110"
+                ></i>
+              </div>
+
+              <!-- Letter inside envelope -->
+              <div
+                id="envelope-letter"
+                class="w-11/12 h-5/6 bg-[#FAF0E6] rounded-lg shadow-inner p-3 flex flex-col items-center justify-center text-center transition-transform duration-700 translate-y-2"
+              >
+                <p class="text-xs text-rose-700 font-serif italic">
+                  For <span data-config="recipientName"></span>
+                </p>
+                <p class="text-base font-bold text-gray-700 mt-1">Open Me 💗</p>
+              </div>
+            </div>
+
+            <!-- Cat GIF -->
+            <div class="mt-6 flex justify-center">
+              <img
+                data-gif="welcome"
+                alt="Welcoming cat"
+                class="w-32 h-32 object-cover rounded-2xl border-2 border-pink-200 shadow-sm"
+              />
+            </div>
+
+            <button
+              id="open-letter-btn"
+              class="mt-6 w-full sm:w-auto bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold px-8 py-3.5 rounded-full shadow-lg hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95"
+            >
+              <span>Open your letter 💌</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- PAGE 2: PERSONALIZED INVITATION -->
+        <section
+          id="stage-2"
+          class="w-full flex flex-col items-center animate-fade-in"
+          hidden
+        >
+          <div
+            class="bg-[#FAF0E6]/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl border-2 border-amber-200/80 shadow-2xl w-full relative"
+          >
+            <!-- Tulip corner decoration -->
+            <div
+              class="absolute -top-8 -left-3 flex items-end -space-x-3 pointer-events-none"
+            >
+              <svg
+                class="tulip h-16 w-8 -rotate-12"
+                style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+              <svg
+                class="tulip h-12 w-6 rotate-6"
+                style="--tulip: #ffd966; --tulip-dark: #f5b83d"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <!-- Stamp Badge -->
+            <div
+              class="absolute top-4 right-4 w-12 h-14 bg-pink-200 border-2 border-dashed border-pink-400 rounded flex flex-col items-center justify-center rotate-3 opacity-80"
+            >
+              <i
+                data-lucide="heart"
+                class="w-5 h-5 text-rose-500 fill-rose-500"
+              ></i>
+              <span class="text-[9px] font-mono text-rose-700 mt-0.5"
+                >LOVE</span
+              >
+            </div>
+
+            <div class="flex items-center gap-3 mb-4">
+              <img
+                data-gif="letter"
+                alt="Reading cat"
+                class="w-16 h-16 rounded-full border-2 border-pink-300 shadow-sm object-cover"
+              />
+              <div>
+                <h2 class="text-xl font-bold text-gray-800">
+                  A Personal Message for my Crushie ✨
+                </h2>
+                <p class="text-xs text-rose-600 font-medium">
+                  Read carefully! 💌
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="text-gray-700 space-y-4 text-sm sm:text-base leading-relaxed bg-white/70 p-5 rounded-2xl border border-amber-100 shadow-inner"
+            >
+              <p class="font-semibold text-rose-600 text-lg">
+                Hi po
+              </p>
+              <p>So... I remember that I still haven't asked you formally... And you said you want something like this.</p>
+              <p>
+                You're pretty fun to talk to, and I thought maybe we could level things up, make some memories outside, and get to know each other better. Hehe...
+              </p>
+              <p>
+                I'm gonna ask you again.
+              </p>
+              <p class="font-bold text-gray-800">Are you ready?</p>
+            </div>
+
+            <button
+              id="ask-me-btn"
+              class="mt-6 w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95"
+            >
+              <span>Okay, ask me!</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- PAGE 3: THE MAIN QUESTION (YES / NO) -->
+        <section
+          id="stage-3"
+          class="w-full flex flex-col items-center text-center animate-fade-in space-y-6"
+          hidden
+        >
+          <div
+            class="bg-white/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-pink-200 shadow-2xl w-full flex flex-col items-center relative"
+          >
+            <!-- Tulip corner decoration -->
+            <div
+              class="absolute -top-8 -left-3 flex items-end -space-x-3 pointer-events-none"
+            >
+              <svg
+                class="tulip h-16 w-8 -rotate-12"
+                style="--tulip: #fb7185; --tulip-dark: #e11d48"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+              <svg
+                class="tulip h-12 w-6 rotate-6"
+                style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <!-- Question state -->
+            <div id="question-state" class="contents">
+              <h2
+                id="invitation-question"
+                class="text-2xl sm:text-3xl font-black text-gray-800 leading-snug mb-3"
+              ></h2>
+
+              <!-- Cat GIF depending on interaction attempt -->
+              <div class="my-3 relative">
+                <img
+                  id="reaction-cat"
+                  alt="Reaction Cat"
+                  class="w-44 h-44 object-cover rounded-2xl border-4 border-pink-200 shadow-md transition-all duration-300"
+                />
+              </div>
+
+              <!-- NO Attempt Dynamic Text Message -->
+              <div
+                class="min-h-[48px] flex items-center justify-center mb-4 px-2"
+              >
+                <p
+                  id="no-attempt-msg"
+                  class="text-rose-600 font-semibold text-sm sm:text-base animate-bounce bg-pink-50 px-4 py-2 rounded-full border border-pink-200 shadow-sm"
+                  hidden
+                ></p>
+                <p
+                  id="no-retired-msg"
+                  class="text-purple-600 font-bold text-sm sm:text-base bg-purple-50 px-4 py-2 rounded-full border border-purple-200 shadow-sm"
+                  hidden
+                >
+                  Looks like the No button got completely broken. I think you pushed it so hard.
+                </p>
+                <p
+                  id="no-initial-msg"
+                  class="text-gray-500 text-xs sm:text-sm italic"
+                >
+                  (Choose wisely... 💭)
+                </p>
+              </div>
+
+              <!-- Interactive Button Group -->
+              <div
+                id="button-area"
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full relative min-h-[110px] pt-2"
+              >
+                <!-- YES BUTTON -->
+                <button
+                  id="yes-btn"
+                  class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-black text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-pink-400/50 hover:scale-110 active:scale-95 transition-all duration-200 z-20 flex items-center gap-2 border-2 border-pink-300"
+                >
+                  <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
+                  <span>YES! 💗</span>
+                </button>
+
+                <!-- RUNAWAY NO BUTTON -->
+                <button
+                  id="no-btn"
+                  class="font-semibold px-6 py-3.5 rounded-2xl border transition-all text-sm sm:text-base z-10 bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100 shadow-sm"
+                >
+                  No 🙈
+                </button>
+              </div>
+            </div>
+
+            <!-- YES CELEBRATION STATE -->
+            <div
+              id="celebration-state"
+              class="flex flex-col items-center space-y-6 py-4 animate-scale-up"
+              hidden
+            >
+              <div
+                class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 border border-emerald-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+              >
+                🎉 MISSION SUCCESSFUL!
+              </div>
+
+              <div
+                class="flex items-end justify-center gap-1 mb-4 pointer-events-none"
+              >
+                <svg
+                  class="tulip h-14 w-7 -rotate-6"
+                  style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                  aria-hidden="true"
+                >
+                  <use href="#tulip" /></svg
+                ><svg
+                  class="tulip h-16 w-8"
+                  style="--tulip: #fb7185; --tulip-dark: #e11d48"
+                  aria-hidden="true"
+                >
+                  <use href="#tulip" /></svg
+                ><svg
+                  class="tulip h-14 w-7 rotate-6"
+                  style="--tulip: #ffd966; --tulip-dark: #f5b83d"
+                  aria-hidden="true"
+                >
+                  <use href="#tulip" />
+                </svg>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-black text-rose-600">
+                WAIT, REALLY?! 🥹💗
+              </h2>
+
+              <img
+                data-gif="yesCelebration"
+                alt="Celebrating Cat"
+                class="w-48 h-48 object-cover rounded-3xl border-4 border-pink-300 shadow-xl my-2"
+              />
+
+              <div
+                class="bg-pink-50 p-5 rounded-2xl border border-pink-200 text-gray-700 space-y-2 text-sm sm:text-base max-w-md"
+              >
+                <p class="font-semibold text-rose-700">
+                  The cat is screaming. 😻
+                </p>
+                <p> Someone just got very lucky!</p>
+                <p class="font-bold text-gray-800">
+                 And the best day of my year is now officially scheduled
+                </p>
+                <p class="text-xs text-gray-500 pt-2 border-t border-pink-200">
+                  I'm looking forward to spending time with you,
+                  <span data-config="recipientName"></span>! 
+                </p>
+              </div>
+
+              <button
+                id="to-date-plan-btn"
+                class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95"
+              >
+                <span>Proceed to the date plan →</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 4: DATE PLAN REVEAL -->
+        <section
+          id="stage-4"
+          class="w-full flex flex-col items-center animate-fade-in space-y-6"
+          hidden
+        >
+          <div
+            class="bg-white/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-pink-200 shadow-2xl w-full relative"
+          >
+            <!-- Tulip corner decoration -->
+            <div
+              class="absolute -top-8 -left-3 flex items-end -space-x-3 pointer-events-none"
+            >
+              <svg
+                class="tulip h-16 w-8 -rotate-12"
+                style="--tulip: #ffb6c1; --tulip-dark: #f472b6"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+              <svg
+                class="tulip h-12 w-6 rotate-6"
+                style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <div class="text-center mb-6">
+              <div
+                class="inline-flex items-center gap-2 bg-pink-100 text-rose-600 border border-pink-200 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2"
+              >
+                Confirmed Details 🗓️
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black text-rose-600">
+                IT'S A DATE! 💗
+              </h2>
+              <p class="text-gray-500 text-xs sm:text-sm mt-1">
+                Here's the plan... unless you have a better idea!
+              </p>
+            </div>
+
+            <!-- Cat GIF -->
+            <div class="flex justify-center mb-6">
+              <img
+                data-gif="datePlan"
+                alt="Cat with Date Plan"
+                class="w-32 h-32 object-cover rounded-2xl border-2 border-pink-200 shadow-sm"
+              />
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+              <!-- DATE -->
+              <div
+                class="bg-pink-50/80 p-4 rounded-2xl border border-pink-200 flex items-start gap-3"
+              >
+                <div class="p-2.5 bg-rose-500 text-white rounded-xl shadow-sm">
+                  <i data-lucide="calendar" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-600 uppercase tracking-wider"
+                  >
+                    Date
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5"
+                    data-config="date"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- TIME -->
+              <div
+                class="bg-pink-50/80 p-4 rounded-2xl border border-pink-200 flex items-start gap-3"
+              >
+                <div class="p-2.5 bg-rose-500 text-white rounded-xl shadow-sm">
+                  <i data-lucide="clock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-600 uppercase tracking-wider"
+                  >
+                    Time
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5"
+                    data-config="time"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- LOCATION -->
+              <div
+                class="bg-pink-50/80 p-4 rounded-2xl border border-pink-200 flex items-start gap-3"
+              >
+                <div class="p-2.5 bg-rose-500 text-white rounded-xl shadow-sm">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-600 uppercase tracking-wider"
+                  >
+                    Location
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5"
+                    data-config="location"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- WHAT TO BRING -->
+              <div
+                class="bg-pink-50/80 p-4 rounded-2xl border border-pink-200 flex items-start gap-3"
+              >
+                <div class="p-2.5 bg-rose-500 text-white rounded-xl shadow-sm">
+                  <i data-lucide="smile" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-600 uppercase tracking-wider"
+                  >
+                    What to Bring
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5"
+                    data-config="whatToBring"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- WHAT TO WEAR -->
+              <div
+                class="bg-pink-50/80 p-4 rounded-2xl border border-pink-200 flex items-start gap-3 sm:col-span-2"
+              >
+                <div
+                  class="p-2.5 bg-rose-500 text-white rounded-xl shadow-sm shrink-0"
+                >
+                  <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-600 uppercase tracking-wider"
+                  >
+                    What to Wear
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5"
+                    data-config="whatToWear"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- ACTIVITIES -->
+              <div
+                class="bg-rose-50/90 p-4 rounded-2xl border border-rose-200 flex items-start gap-3 sm:col-span-2"
+              >
+                <div
+                  class="p-2.5 bg-rose-600 text-white rounded-xl shadow-sm shrink-0"
+                >
+                  <i data-lucide="film" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3
+                    class="text-xs font-bold text-rose-700 uppercase tracking-wider"
+                  >
+                    Date Activities
+                  </h3>
+                  <p
+                    class="text-sm font-semibold text-gray-800 mt-0.5 leading-relaxed"
+                    data-config="dateActivity"
+                  ></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center pt-2 pb-4 border-t border-pink-100">
+              <p class="text-xs sm:text-sm text-gray-600 font-medium">
+                Sounds good? Or do you have a better idea? 🤔
+              </p>
+            </div>
+
+            <button
+              id="to-form-btn"
+              class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95"
+            >
+              <span>Proceed to the next part →</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- PAGE 5: DATE SUGGESTION FORM -->
+        <section
+          id="stage-5"
+          class="w-full flex flex-col items-center animate-fade-in space-y-6"
+          hidden
+        >
+          <div
+            class="bg-white/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-pink-200 shadow-2xl w-full relative"
+          >
+            <!-- Tulip corner decoration -->
+            <div
+              class="absolute -top-8 -left-3 flex items-end -space-x-3 pointer-events-none"
+            >
+              <svg
+                class="tulip h-16 w-8 -rotate-12"
+                style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+              <svg
+                class="tulip h-12 w-6 rotate-6"
+                style="--tulip: #fb7185; --tulip-dark: #e11d48"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <div class="text-center mb-6">
+              <h2 class="text-2xl sm:text-3xl font-black text-rose-600">
+                Your turn! 💌
+              </h2>
+              <p class="text-gray-500 text-xs sm:text-sm mt-1">
+                Got a better idea? I'm all ears.
+              </p>
+            </div>
+
+            <!-- Suggestion form -->
+            <form id="suggestion-form" class="space-y-4">
+              <!-- DATE SUGGESTION -->
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">
+                  1. Date Suggestion
+                </label>
+                <input
+                  type="text"
+                  name="dateSuggestion"
+                  placeholder="Maybe we could go on..."
+                  class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-pink-50/50 text-sm"
+                />
+              </div>
+
+              <!-- TIME SUGGESTION -->
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">
+                  2. Time Suggestion
+                </label>
+                <input
+                  type="text"
+                  name="timeSuggestion"
+                  placeholder="What time works best for you?"
+                  class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-pink-50/50 text-sm"
+                />
+              </div>
+
+              <!-- LOCATION SUGGESTION -->
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">
+                  3. Location Suggestion
+                </label>
+                <input
+                  type="text"
+                  name="locationSuggestion"
+                  placeholder="I know a place we could try..."
+                  class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-pink-50/50 text-sm"
+                />
+              </div>
+
+              <!-- ACTIVITY SUGGESTION -->
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">
+                  4. Activity Suggestion
+                </label>
+                <input
+                  type="text"
+                  name="activitySuggestion"
+                  placeholder="I'd rather do something like..."
+                  class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-pink-50/50 text-sm"
+                />
+              </div>
+
+              <!-- ADDITIONAL MESSAGE -->
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">
+                  5. Additional Message
+                </label>
+                <textarea
+                  rows="3"
+                  name="additionalMessage"
+                  placeholder="Any other suggestions? 👀"
+                  class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-pink-50/50 text-sm resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                id="submit-btn"
+                type="submit"
+                class="w-full mt-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95 disabled:opacity-50"
+              >
+                <span id="submit-sending" hidden
+                  >Sending suggestions... ⏳</span
+                >
+                <span id="submit-idle" class="contents">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Send my suggestions 💌</span>
+                </span>
+              </button>
+            </form>
+
+            <!-- SUCCESS MESSAGE STATE -->
+            <div
+              id="form-success"
+              class="flex flex-col items-center text-center space-y-5 py-4 animate-scale-up"
+              hidden
+            >
+              <div
+                class="w-16 h-16 bg-pink-100 text-rose-600 rounded-full flex items-center justify-center border-2 border-pink-200 shadow-sm"
+              >
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+              </div>
+
+              <h3 class="text-xl font-black text-rose-600">Message sent! 💌</h3>
+
+              <img
+                data-gif="suggestionForm"
+                alt="Working Cat"
+                class="w-36 h-36 object-cover rounded-2xl border-2 border-pink-200 shadow-sm"
+              />
+
+              <div
+                class="bg-pink-50 p-4 rounded-2xl border border-pink-200 text-xs sm:text-sm text-gray-700 space-y-1"
+              >
+                <p class="font-semibold text-rose-700">
+                  Your suggestions have officially entered the planning
+                  department.
+                </p>
+                <p class="text-gray-600">
+                  The cat and I will review them very seriously. 🧐
+                </p>
+              </div>
+
+              <button
+                id="to-final-btn"
+                class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-pink-300/50 transition-all duration-300 flex items-center justify-center gap-2 text-base active:scale-95"
+              >
+                <span>Proceed to the final surprise →</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 6: FINAL SURPRISE & PHOTO GALLERY -->
+        <section
+          id="stage-6"
+          class="w-full flex flex-col items-center animate-fade-in space-y-6"
+          hidden
+        >
+          <div
+            class="bg-white/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-pink-200 shadow-2xl w-full relative"
+          >
+            <!-- Tulip corner decoration -->
+            <div
+              class="absolute -top-8 -left-3 flex items-end -space-x-3 pointer-events-none"
+            >
+              <svg
+                class="tulip h-16 w-8 -rotate-12"
+                style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+              <svg
+                class="tulip h-12 w-6 rotate-6"
+                style="--tulip: #ffb38a; --tulip-dark: #f97362"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <div class="text-center mb-6">
+              <div
+                class="inline-flex items-center gap-2 bg-pink-100 text-rose-600 border border-pink-200 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2"
+              >
+                Scrapbook Preview 📸
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black text-rose-600">
+                Little moments we'd probably make 💗
+              </h2>
+            </div>
+
+            <!-- Polaroid Grid (filled by script.js from CONFIG.photos) -->
+            <div
+              id="photo-grid"
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+            ></div>
+
+            <!-- Final Cat GIF -->
+            <div class="flex justify-center mb-6">
+              <img
+                data-gif="finalStage"
+                alt="Cat with Flowers"
+                class="w-40 h-40 object-cover rounded-3xl border-4 border-pink-300 shadow-lg"
+              />
+            </div>
+
+            <div
+              class="flex items-end justify-center gap-1 mb-4 pointer-events-none"
+            >
+              <svg
+                class="tulip h-14 w-7 -rotate-6"
+                style="--tulip: #fb7185; --tulip-dark: #e11d48"
+                aria-hidden="true"
+              >
+                <use href="#tulip" /></svg
+              ><svg
+                class="tulip h-16 w-8"
+                style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+                aria-hidden="true"
+              >
+                <use href="#tulip" /></svg
+              ><svg
+                class="tulip h-14 w-7 rotate-6"
+                style="--tulip: #c4a6f5; --tulip-dark: #9f7aea"
+                aria-hidden="true"
+              >
+                <use href="#tulip" />
+              </svg>
+            </div>
+
+            <!-- Heartfelt Closing Message -->
+            <div
+              class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl border border-pink-200 text-center space-y-3 mb-6 shadow-inner"
+            >
+              <h3 class="text-lg font-bold text-rose-700">
+                Thank you for saying yes,
+                <span data-config="recipientName"></span>. 💗
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                I'm really looking forward to spending time with you. No
+                pressure to make everything perfect, just be yourself. I just think it would be
+                nice to get to know you more, share some laughs, and make a
+                little memory together.
+              </p>
+              <p class="text-sm font-bold text-gray-800 pt-2">
+                See you soon? 
+              </p>
+            </div>
+
+            <!-- Badge -->
+            <div class="text-center mb-8">
+              <span
+                class="inline-block bg-pink-100 border border-pink-300 text-rose-700 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm"
+              >
+                Date officially pending... but excitement level: 100% 🚀
+              </span>
+            </div>
+
+            <!-- Replay Experience Button -->
+            <button
+              id="replay-btn"
+              class="w-full bg-white hover:bg-pink-50 text-rose-600 font-bold py-3.5 px-6 rounded-2xl border-2 border-pink-300 shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm active:scale-95"
+            >
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Replay the experience 💌</span>
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer
+        class="w-full text-center pt-4 pb-36 text-xs text-rose-400 font-medium z-10 flex items-center justify-center gap-2"
+      >
+        <svg
+          class="tulip h-8 w-4"
+          style="--tulip: #ff69b4; --tulip-dark: #e0407f"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+        <span>Made with love by Aaron and his cat for Nina 🐾</span>
+        <svg
+          class="tulip h-8 w-4"
+          style="--tulip: #fb7185; --tulip-dark: #e11d48"
+          aria-hidden="true"
+        >
+          <use href="#tulip" />
+        </svg>
+      </footer>
+    </div>
+
+    <!-- Lucide icons (same icon set as the original) -->
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <!-- App logic -->
+    <script src="script.js"></script>
+    <!-- Background Music Element -->
+    <audio
+      id="bg-music"
+      src="assets/music/background.mp3"
+      preload="auto"
+      loop
+    ></audio>
+  </body>
+</html>
